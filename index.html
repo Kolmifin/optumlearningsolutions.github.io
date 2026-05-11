@@ -5,223 +5,300 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      font-family: Arial;
-      margin: 0;
-      background: #f4f6f9;
-    }
+    body { font-family: Arial; margin:0; background:#f4f6f9; }
 
     header {
-      background: #ffffff;
+      background: #1e293b;
       text-align: center;
-      padding: 20px;
-      border-bottom: 2px solid #e0e0e0;
+      padding: 25px;
+      color: white;
     }
 
     header img {
       width: 180px;
+      margin-bottom: 10px;
     }
 
     nav {
       background: #1e293b;
+      text-align: right;
       padding: 10px;
-      text-align: center;
     }
 
     nav a {
       color: white;
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
-      font-weight: bold;
+      font-size: 14px;
     }
 
-    section {
-      padding: 30px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+    .container { padding: 20px; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 15px;
     }
 
     .card {
       background: white;
       padding: 20px;
-      border-radius: 15px;
+      border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
     }
 
     button {
       background: #2563eb;
       color: white;
-      padding: 10px 15px;
+      padding: 8px 12px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: gray;
     }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
   optum-logo.png
-  <p>Empowering Training Leaders to Perform, Lead, and Grow</p>
+  <h1>Training Leaders Hub</h1>
+  <p>Empowering Current & Aspiring Training Leaders</p>
 </header>
 
-<!-- NAVIGATION -->
 <nav>
-  <a href="#modules">Modules</a>
-  <a href="#skills">Core Skills</a>
-  <a href="#coaching">Coaching</a>
-  <a href="#management">Management</a>
+  Modules | Core Skills | Coaching | Management
 </nav>
 
-<!-- MODULE OVERVIEW -->
-<section id="modules">
-  <h2>Learning Modules</h2>
+<div class="container">
 
-  <div class="grid">
-    <div class="card">
-      <h3>Leadership Skills</h3>
-      <p>Confidence, communication, and decision-making</p>
-      <button onclick="showContent('leadership')">Start Module</button>
-    </div>
+<h2 style="text-align:center;">Learning Modules</h2>
 
-    <div class="card">
-      <h3>Root Cause Analysis</h3>
-      <p>Using 5W Method</p>
-      <button onclick="showContent('rca')">Start Module</button>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <h3>Coaching vs Feedback</h3>
-      <button onclick="showContent('coaching')">Start Module</button>
-    </div>
+<div class="card">
+<h3>Leadership Skills</h3>
+<p>Confidence, communication, and decision-making</p>
+<button onclick="loadContent('leadership')">Start Module</button>
+</div>
 
-    <div class="card">
-      <h3>Performance Management</h3>
-      <button onclick="showContent('performance')">Start Module</button>
-    </div>
+<div class="card">
+<h3>Root Cause Analysis</h3>
+<p>Using 5W Method</p>
+<button onclick="loadContent('rca')">Start Module</button>
+</div>
 
-    <div class="card">
-      <h3>Attrition Management</h3>
-      <button onclick="showContent('attrition')">Start Module</button>
-    </div>
+<div class="card">
+<h3>Coaching vs Feedback</h3>
+<button onclick="loadContent('coaching')">Start Module</button>
+</div>
 
-    <div class="card">
-      <h3>Classroom Management</h3>
-      <button onclick="showContent('classroom')">Start Module</button>
-    </div>
-  </div>
-</section>
+<div class="card">
+<h3>Performance Management</h3>
+<button onclick="loadContent('performance')">Start Module</button>
+</div>
 
-<!-- CONTENT AREA -->
-<section id="contentDisplay">
-  <h2>Module Content</h2>
-  <div class="card" id="contentBox">
-    <p>Select a module to begin learning.</p>
-  </div>
-</section>
+<div class="card">
+<h3>Attrition Management</h3>
+<button onclick="loadContent('attrition')">Start Module</button>
+</div>
 
-<!-- FOOTER -->
-<footer>
-  © 2026 Fynne Arcilla | Training Leaders Hub
-</footer>
+<div class="card">
+<h3>Classroom Management</h3>
+<button onclick="loadContent('classroom')">Start Module</button>
+</div>
 
-<!-- SCRIPT -->
+</div>
+
+<h2 style="text-align:center; margin-top:30px;">Module Content</h2>
+
+<div class="card" id="contentBox">
+Select a module to begin learning.
+</div>
+
+</div>
+
 <script>
-function showContent(module) {
-  let content = "";
 
-  if (module === "leadership") {
-    content = `
-    <h3>Leadership Skills</h3>
-    <p><b>How to Build:</b> Practice facilitation, communicate clearly, and make data-driven decisions.</p>
-    <p><b>30-Min Activity:</b><br>
-    1. Reflect on weak areas (10 mins)<br>
-    2. Record practice session (10 mins)<br>
-    3. Deliver a live mini-training (10 mins)
-    </p>`;
-  }
+function loadContent(type) {
 
-  if (module === "rca") {
-    content = `
-    <h3>Root Cause Analysis (5W)</h3>
-    <p><b>Steps:</b> What, Where, When, Who, Why</p>
-    <p><b>Activity:</b><br>
-    1. Identify issue (10 mins)<br>
-    2. Answer 5W (10 mins)<br>
-    3. Build solution (10 mins)
-    </p>`;
-  }
+let content = "";
 
-  if (module === "coaching") {
-    content = `
-    <h3>Coaching vs Feedback</h3>
-    <p>Feedback = telling. Coaching = asking.</p>
-    <p><b>Activity:</b><br>
-    1. Write feedback (10 mins)<br>
-    2. Convert to coaching (10 mins)<br>
-    3. Practice with learner (10 mins)
-    </p>`;
-  }
+if(type==="leadership"){
+content = `
+<h3>Leadership Skills (Confidence, Communication, Decision-Making)</h3>
 
-  if (module === "performance") {
-    content = `
-    <h3>Performance & Behavior</h3>
-    <p>Performance = skills. Behavior = attitude.</p>
-    <p><b>Activity:</b><br>
-    1. Identify issue (10 mins)<br>
-    2. Diagnose (10 mins)<br>
-    3. Action plan (10 mins)
-    </p>`;
-  }
+<b>Why This Matters:</b>
+Training Leaders influence learner performance, engagement, and confidence.
+Weak leadership impacts training outcomes and operational success.
 
-  if (module === "attrition") {
-    content = `
-    <h3>Managing Attrition</h3>
-    <p>Understand why learners leave and fix root causes.</p>
-    <p><b>Activity:</b><br>
-    1. Analyze reasons (10 mins)<br>
-    2. Identify trends (10 mins)<br>
-    3. Improve process (10 mins)
-    </p>`;
-  }
+<b>Key Skills:</b>
+• Confidence → builds trust and authority  
+• Communication → ensures clarity and engagement  
+• Decision-Making → enables fast problem-solving  
 
-  if (module === "classroom") {
-    content = `
-    <h3>Classroom Management</h3>
-    <p>Engage learners and maintain control.</p>
-    <p><b>Activity:</b><br>
-    1. Identify issues (10 mins)<br>
-    2. Apply engagement tactics (10 mins)<br>
-    3. Practice delivery (10 mins)
-    </p>`;
-  }
+<b>How to Apply:</b>
+1. Structure your sessions clearly (Intro → Content → Practice)  
+2. Use confident tone and body language  
+3. Make decisions using data and observation  
 
-  document.getElementById("contentBox").innerHTML = content;
+<b>Scenario:</b>
+You notice trainees are disengaged mid-session.  
+→ Decision: Adjust approach immediately (add activity or discussion)  
+
+<b>30-Min Activity:</b>
+1. Reflect on weak areas (10 mins)  
+2. Record yourself explaining a topic (10 mins)  
+3. Deliver a mini training to a peer (10 mins)
+`;
+}
+
+if(type==="rca"){
+content = `
+<h3>Root Cause Analysis (5W Method)</h3>
+
+<b>Why This Matters:</b>
+Training Leaders must solve problems at the root, not surface level.
+
+<b>5W Framework:</b>
+• What → What is the issue?  
+• Where → Where does it happen?  
+• When → When does it occur?  
+• Who → Who is involved?  
+• Why → Why is it happening?  
+
+<b>Scenario:</b>
+Low trainee QA scores.
+
+<b>Apply 5W:</b>
+What → Low performance  
+Where → Product training  
+When → Week 2  
+Who → New hires  
+Why → Lack of product understanding  
+
+<b>Solution:</b>
+Introduce guided practice + knowledge checks.
+
+<b>30-Min Activity:</b>
+1. Identify an issue (10 mins)  
+2. Answer 5W questions (10 mins)  
+3. Build 1 corrective action (10 mins)
+`;
+}
+
+if(type==="coaching"){
+content = `
+<h3>Coaching vs Feedback</h3>
+
+<b>Difference:</b>
+Feedback = tells what happened  
+Coaching = guides improvement  
+
+<b>Examples:</b>
+Feedback: "You missed key steps."  
+Coaching: "What can you improve in your delivery?"  
+
+<b>When to Use:</b>
+• Feedback → immediate correction  
+• Coaching → long-term development  
+
+<b>Scenario:</b>
+Trainer struggles with engagement.
+
+→ Use coaching:
+"What techniques can increase participation?"
+
+<b>30-Min Activity:</b>
+1. Convert feedback to coaching (10 mins)  
+2. Practice roleplay (10 mins)  
+3. Apply with trainee (10 mins)
+`;
+}
+
+if(type==="performance"){
+content = `
+<h3>Performance & Behavior Management</h3>
+
+<b>Key Concept:</b>
+Performance = skills  
+Behavior = attitude  
+
+<b>How to Manage:</b>
+1. Identify issue (performance vs behavior)  
+2. Diagnose root cause  
+3. Apply coaching or training  
+
+<b>Scenario:</b>
+Low participation  
+→ Behavior issue → coaching needed  
+
+Low scores → skill issue → retraining  
+
+<b>30-Min Activity:</b>
+1. Observe learner (10 mins)  
+2. Identify issue type (10 mins)  
+3. Create action plan (10 mins)
+`;
+}
+
+if(type==="attrition"){
+content = `
+<h3>Attrition Management</h3>
+
+<b>Why This Matters:</b>
+Attrition reduces training effectiveness and increases cost.
+
+<b>Common Causes:</b>
+• Difficulty level  
+• Trainer effectiveness  
+• Environment  
+
+<b>Scenario:</b>
+Dropouts increase in Week 1  
+
+<b>Action:</b>
+Improve onboarding + support  
+
+<b>30-Min Activity:</b>
+1. Identify reasons (10 mins)  
+2. Spot patterns (10 mins)  
+3. Implement changes (10 mins)
+`;
+}
+
+if(type==="classroom"){
+content = `
+<h3>Classroom Management</h3>
+
+<b>Key Focus:</b>
+• Engagement  
+• Discipline  
+• Time management  
+
+<b>Techniques:</b>
+• Call learners by name  
+• Use activities  
+• Manage disruptions early  
+
+<b>Scenario:</b>
+Side conversations happening  
+
+→ Action: redirect focus + involve participants  
+
+<b>30-Min Activity:</b>
+1. Observe behavior (10 mins)  
+2. Apply engagement technique (10 mins)  
+3. Practice facilitation (10 mins)
+`;
+}
+
+document.getElementById("contentBox").innerHTML = content;
+
 }
 </script>
 
 </body>
 </html>
+``
